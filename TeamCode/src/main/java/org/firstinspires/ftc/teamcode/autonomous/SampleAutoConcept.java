@@ -11,17 +11,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
-import org.firstinspires.ftc.teamcode.subsystems.ActiveIntake;
-import org.firstinspires.ftc.teamcode.subsystems.Arm;
-import org.firstinspires.ftc.teamcode.subsystems.ArmClaw;
-import org.firstinspires.ftc.teamcode.subsystems.ClawPivot;
-import org.firstinspires.ftc.teamcode.subsystems.Extendo;
-import org.firstinspires.ftc.teamcode.subsystems.IntakePivot;
-import org.firstinspires.ftc.teamcode.subsystems.Lift;
-import org.opencv.core.Mat;
+import org.firstinspires.ftc.teamcode.subsystems.*;
 
 @Config
-@Autonomous(name = "ITD_SampleAuton", group = "Autonomous")
+@Autonomous(name = "RR ITD_SampleAuton", group = "Autonomous")
 public class SampleAutoConcept extends LinearOpMode {
 
 
@@ -31,11 +24,8 @@ public class SampleAutoConcept extends LinearOpMode {
         MecanumDrive drive = new MecanumDrive(hardwareMap, initialPose);
 
         ActiveIntake activeIntake = new ActiveIntake(hardwareMap);
-        Arm arm = new Arm(hardwareMap);
         ArmClaw armClaw = new ArmClaw(hardwareMap);
-        ClawPivot clawPivot = new ClawPivot(hardwareMap);
         Extendo extendo = new Extendo(hardwareMap);
-        IntakePivot intakePivot = new IntakePivot(hardwareMap);
         Lift lift = new Lift(hardwareMap);
 
 
@@ -83,22 +73,18 @@ public class SampleAutoConcept extends LinearOpMode {
         if (isStopRequested()) return;
 
 
-
-
-
-        //Make code with Actions here
         Actions.runBlocking(
                 new SequentialAction(
 
-                        //----------Score preload----------\\
+        //----------Score preload----------\\
                         new ParallelAction(
                                 scorePreload,
                                 AutonSequences.scoreHigh()
                         ),
-                        //Start active intake
-                        activeIntake.in(),
+                        AutonSequences.armClawScore(),
 
-                        //----------Block 1 cycle----------\\
+
+        //----------Block 1 cycle----------\\
                         new ParallelAction(
                                 grabPickup1,
                                 AutonSequences.readyForPickup()
@@ -111,8 +97,9 @@ public class SampleAutoConcept extends LinearOpMode {
                                 scorePickup1,
                                 AutonSequences.scoreHigh()
                         ),
+                        AutonSequences.armClawScore(),
 
-                        //----------Block 1 cycle----------\\
+        //----------Block 2 cycle----------\\
                         //Grab Block 2
                         new ParallelAction(
                                 grabPickup2,
@@ -126,8 +113,9 @@ public class SampleAutoConcept extends LinearOpMode {
                                 scorePickup2,
                                 AutonSequences.scoreHigh()
                         ),
+                        AutonSequences.armClawScore(),
 
-                        //----------Block 3 cycle----------\\
+        //----------Block 3 cycle----------\\
                         //Grab Block 3
                         new ParallelAction(
                                 grabPickup3,
@@ -141,9 +129,12 @@ public class SampleAutoConcept extends LinearOpMode {
                                 scorePickup3,
                                 AutonSequences.scorePickup3()
                         ),
-                        extendo.mini_out(),
+                        new ParallelAction(
+                                AutonSequences.armClawScore(),
+                                extendo.mini_out()
+                        ),
 
-                        //----------Park----------\\
+        //----------Park----------\\
                         new ParallelAction(
                                 park,
                                 //reset all subsystems

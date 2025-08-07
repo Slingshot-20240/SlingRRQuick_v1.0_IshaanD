@@ -7,13 +7,7 @@ import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.SleepAction;
 
-import org.firstinspires.ftc.teamcode.subsystems.ActiveIntake;
-import org.firstinspires.ftc.teamcode.subsystems.Arm;
-import org.firstinspires.ftc.teamcode.subsystems.ArmClaw;
-import org.firstinspires.ftc.teamcode.subsystems.ClawPivot;
-import org.firstinspires.ftc.teamcode.subsystems.Extendo;
-import org.firstinspires.ftc.teamcode.subsystems.IntakePivot;
-import org.firstinspires.ftc.teamcode.subsystems.Lift;
+import org.firstinspires.ftc.teamcode.subsystems.*;
 
 
 public class AutonSequences {
@@ -37,12 +31,15 @@ public class AutonSequences {
                 new ParallelAction(
                         arm.toScore(),
                         clawPivot.toScore(),
-                        intakePivot.toIntake()
-                ),
-                //Tune delay for optimal scoring
-                new SleepAction(1),
-                armClaw.open()
+                        intakePivot.toIntake(),
+                        activeIntake.in()
+                )
+        );
+    }
 
+    public static Action armClawScore() {
+        return new SequentialAction(
+                armClaw.open()
         );
     }
 
@@ -85,7 +82,6 @@ public class AutonSequences {
                         moveBlockInClaw(),
                         extendo.mini_out()
                 )
-
         );
     }
     /**
@@ -102,18 +98,12 @@ public class AutonSequences {
 
     public static Action scorePickup3() {
         return new SequentialAction(
-
                 lift.toHighBasket(),
 
                 new ParallelAction(
                         arm.toScore(),
                         clawPivot.toScore()
-                ),
-
-                //Tune Delay for optimal scoring
-                new SleepAction(1),
-                armClaw.open()
-
+                )
         );
     }
 
