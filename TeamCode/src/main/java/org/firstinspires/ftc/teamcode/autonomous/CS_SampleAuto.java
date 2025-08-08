@@ -62,22 +62,20 @@ public class CS_SampleAuto extends LinearOpMode {
 
 
         while (!isStopRequested() && !opModeIsActive()) {
-            int position = visionOutputPosition;
-            telemetry.addData("Position during Init", position);
+            telemetry.addData("Position during Init", visionOutputPosition);
             telemetry.update();
         }
 
-        int startPosition = visionOutputPosition;
-        telemetry.addData("Starting Position", startPosition);
+        telemetry.addData("Starting Position", visionOutputPosition);
         telemetry.update();
         waitForStart();
 
         if (isStopRequested()) return;
 
         Action trajectoryActionChosen;
-        if (startPosition == 1) {
+        if (visionOutputPosition == 1) {
             trajectoryActionChosen = tab1.build();
-        } else if (startPosition == 2) {
+        } else if (visionOutputPosition == 2) {
             trajectoryActionChosen = tab2.build();
         } else {
             trajectoryActionChosen = tab3.build();
