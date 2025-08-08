@@ -11,10 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ActiveIntake;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ArmClaw;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Extendo;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Lift;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.*;
 
 @Config
 @Autonomous(name = "RR ITD_SampleAuton", group = "Autonomous")
