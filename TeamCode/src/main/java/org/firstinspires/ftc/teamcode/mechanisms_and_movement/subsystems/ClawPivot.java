@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.subsystems;
+package org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems;
 
 import androidx.annotation.NonNull;
 
@@ -7,35 +7,35 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class IntakePivot {
-    private final Servo armClaw;
+public class ClawPivot {
+    private final Servo clawPivot;
 
-    public IntakePivot(HardwareMap hardwareMap) {
-        armClaw = hardwareMap.get(Servo.class, "armClaw");
+    public ClawPivot(HardwareMap hardwareMap) {
+        clawPivot = hardwareMap.get(Servo.class, "clawPivot");
     }
 
     //-----------------------------Transfer--------------------------------------\\
-    public class IPTransfer implements Action {
+    public class CPTransfer implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            armClaw.setPosition(0.5);
+            clawPivot.setPosition(0);
             return false;
         }
     }
     public Action toTransfer() {
-        return new IPTransfer();
+        return new CPTransfer();
     }
 
-    //-----------------------------Intake-----------------------------------\\
-    public class IPReady implements Action {
+    //-----------------------------Score-----------------------------------\\
+    public class CPScore implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            armClaw.setPosition(0);
+            clawPivot.setPosition(0.3);
             return false;
         }
     }
-    public Action toIntake() {
-        return new IPReady();
+    public Action toScore() {
+        return new CPScore();
     }
 
 

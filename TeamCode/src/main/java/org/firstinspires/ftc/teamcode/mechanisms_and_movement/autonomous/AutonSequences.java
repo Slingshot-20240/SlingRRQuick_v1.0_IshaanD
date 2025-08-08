@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autonomous;
+package org.firstinspires.ftc.teamcode.mechanisms_and_movement.autonomous;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
@@ -7,7 +7,13 @@ import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.SleepAction;
 
-import org.firstinspires.ftc.teamcode.subsystems.*;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ActiveIntake;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Arm;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ArmClaw;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ClawPivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Extendo;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.IntakePivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Lift;
 
 
 public class AutonSequences {
