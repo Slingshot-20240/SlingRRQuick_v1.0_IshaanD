@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.*;
 
 @Config
-@Autonomous(name = "RR ITD_SampleAuton", group = "Autonomous")
+@Autonomous(name = "Concept RR ITD_SampleAuton", group = "Autonomous")
 public class SampleAutoConcept extends LinearOpMode {
 
 
