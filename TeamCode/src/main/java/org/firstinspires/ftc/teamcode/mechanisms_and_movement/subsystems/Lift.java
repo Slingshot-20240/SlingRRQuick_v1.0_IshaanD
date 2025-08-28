@@ -10,14 +10,19 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Lift {
-    private final DcMotorEx lift;
+    private final DcMotorEx liftl;
+    private final DcMotorEx liftr;
 
     public Lift(HardwareMap hardwareMap) {
-        lift = hardwareMap.get(DcMotorEx.class, "lift");
-        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        lift.setDirection(DcMotorSimple.Direction.FORWARD);
-    }
+        liftl = hardwareMap.get(DcMotorEx.class, "liftl");
+        liftr = hardwareMap.get(DcMotorEx.class, "liftr");
 
+        liftl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftl.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        liftr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        liftr.setDirection(DcMotorSimple.Direction.FORWARD);
+    }
 
     //-----------------------------Lift Down--------------------------------------\\
     public class LiftDown implements Action {
@@ -26,17 +31,25 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(-0.8);
+                liftl.setPower(-0.8);
+                liftr.setPower(-0.8);
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
-            if (pos > 100.0) {
+            double posl = liftl.getCurrentPosition();
+            double posr = liftr.getCurrentPosition();
+            double avgPos = (Math.abs(posl - posr) <= 50) ? (posl + posr) / 2.0 : posl;
+
+            packet.put("left liftPos", posl);
+            packet.put("right liftPos", posr);
+            packet.put("avg liftPos", avgPos);
+
+            if (avgPos > 100.0) {
                 return true;
             } else {
                 //negative gravity
-                lift.setPower(0.01);
+                liftl.setPower(0.01);
+                liftr.setPower(0.01);
                 return false;
             }
         }
@@ -52,18 +65,25 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(0.8);
+                liftl.setPower(0.8);
+                liftr.setPower(0.8);
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
-            if (pos < 395 || pos > 405) {
-                return true;
-            } else {
-                //negative gravity
-                lift.setPower(0.01);
+            double posl = liftl.getCurrentPosition();
+            double posr = liftr.getCurrentPosition();
+            double avgPos = (Math.abs(posl - posr) <= 50) ? (posl + posr) / 2.0 : posl;
+
+            packet.put("left liftPos", posl);
+            packet.put("right liftPos", posr);
+            packet.put("avg liftPos", avgPos);
+
+            if (avgPos >= 395 && avgPos <= 405) {
+                liftl.setPower(0.01);
+                liftr.setPower(0.01);
                 return false;
+            } else {
+                return true;
             }
         }
     }
@@ -78,19 +98,25 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(0.8);
+                liftl.setPower(0.8);
+                liftr.setPower(0.8);
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
-            //Gives a safety range
-            if (pos < 1395 || pos > 1405) {
-                return true;
-            } else {
-                //negative gravity
-                lift.setPower(0.01);
+            double posl = liftl.getCurrentPosition();
+            double posr = liftr.getCurrentPosition();
+            double avgPos = (Math.abs(posl - posr) <= 50) ? (posl + posr) / 2.0 : posl;
+
+            packet.put("left liftPos", posl);
+            packet.put("right liftPos", posr);
+            packet.put("avg liftPos", avgPos);
+
+            if (avgPos >= 1395 && avgPos <= 1405) {
+                liftl.setPower(0.01);
+                liftr.setPower(0.01);
                 return false;
+            } else {
+                return true;
             }
         }
     }
@@ -105,17 +131,26 @@ public class Lift {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(0.8);
                 initialized = true;
+                liftl.setPower(0.8);
+                liftr.setPower(0.8);
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
-            if (pos < 2000) {
+            double posl = liftl.getCurrentPosition();
+            double posr = liftr.getCurrentPosition();
+            double avgPos = (Math.abs(posl - posr) <= 50) ? (posl + posr) / 2.0 : posl;
+
+            packet.put("left liftPos", posl);
+            packet.put("right liftPos", posr);
+            packet.put("avg liftPos", avgPos);
+
+            // stop when reaching high basket
+            if (avgPos < 2000) {
                 return true;
             } else {
                 //negative gravity
-                lift.setPower(0.01);
+                liftl.setPower(0.01);
+                liftr.setPower(0.01);
                 return false;
             }
         }
@@ -123,8 +158,4 @@ public class Lift {
     public Action toHighBasket() {
         return new LiftHighBasket();
     }
-
-
-
 }
-
