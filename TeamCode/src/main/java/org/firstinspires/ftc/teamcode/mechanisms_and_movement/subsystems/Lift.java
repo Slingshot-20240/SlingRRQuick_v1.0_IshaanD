@@ -58,7 +58,7 @@ public class Lift {
         return new LiftDown();
     }
 
-    //----------------------------Lift Transfer----------------------------------\\
+    //----------------------------Lift Transfer-----------------------------------\\
     public class LiftTransfer implements Action {
         private boolean initialized = false;
 
