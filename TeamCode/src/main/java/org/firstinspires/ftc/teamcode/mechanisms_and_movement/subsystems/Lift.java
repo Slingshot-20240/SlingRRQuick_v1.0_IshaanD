@@ -91,7 +91,7 @@ public class Lift {
         return new LiftTransfer();
     }
 
-    //---------------------------Lift Low Basket-----------------------------------\\
+    //---------------------------Lift Low Basket----------------------------------\\
     public class LiftLowBasket implements Action {
         private boolean initialized = false;
 
