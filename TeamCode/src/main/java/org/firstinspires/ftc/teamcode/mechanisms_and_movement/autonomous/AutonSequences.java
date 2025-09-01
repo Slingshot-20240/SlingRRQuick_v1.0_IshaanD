@@ -25,6 +25,7 @@ public class AutonSequences {
     static Extendo extendo = new Extendo(hardwareMap);
     static IntakePivot intakePivot = new IntakePivot(hardwareMap);
     static Lift lift = new Lift(hardwareMap);
+
     /**
      * Lift up, Arm scores
      */
@@ -77,6 +78,7 @@ public class AutonSequences {
                 )
         );
     }
+
     /**
      * Extendo in, Claw grabs
      */
@@ -90,6 +92,7 @@ public class AutonSequences {
                 )
         );
     }
+
     /**
      * Pushes block towards claw for transfer
      */
