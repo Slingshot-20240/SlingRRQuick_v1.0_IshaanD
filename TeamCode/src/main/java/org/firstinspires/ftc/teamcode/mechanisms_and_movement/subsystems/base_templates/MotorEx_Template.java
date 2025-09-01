@@ -10,12 +10,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class MotorEx_Template {
-    private final DcMotorEx lift;
+    private final DcMotorEx motor;
 
     public MotorEx_Template(HardwareMap hardwareMap) {
-        lift = hardwareMap.get(DcMotorEx.class, "lift");
-        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        lift.setDirection(DcMotorSimple.Direction.FORWARD);
+        motor = hardwareMap.get(DcMotorEx.class, "motor");
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
 
@@ -26,16 +26,16 @@ public class MotorEx_Template {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(-0.8); //Motor Speed
+                motor.setPower(-0.8); //Motor Speed
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
+            double pos = motor.getCurrentPosition();
+            packet.put("motorPos", pos);
             if (pos > 100.0) {
                 return true;
             } else {
-                lift.setPower(0.01); //negative gravity
+                motor.setPower(0.01); //negative gravity
                 return false;
             }
         }
@@ -51,16 +51,16 @@ public class MotorEx_Template {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(0.8);
+                motor.setPower(0.8);
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
+            double pos = motor.getCurrentPosition();
+            packet.put("motorPos", pos);
             if (pos < 395 || pos > 405) {
                 return true;
             } else {
-                lift.setPower(0.01); //negative gravity
+                motor.setPower(0.01); //negative gravity
                 return false;
             }
         }
@@ -76,16 +76,16 @@ public class MotorEx_Template {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
             if (!initialized) {
-                lift.setPower(0.8);
+                motor.setPower(0.8);
                 initialized = true;
             }
 
-            double pos = lift.getCurrentPosition();
-            packet.put("liftPos", pos);
+            double pos = motor.getCurrentPosition();
+            packet.put("motorPos", pos);
             if (pos < 2000) {
                 return true;
             } else {
-                lift.setPower(0.01); //negative gravity
+                motor.setPower(0.01); //negative gravity
                 return false;
             }
         }
