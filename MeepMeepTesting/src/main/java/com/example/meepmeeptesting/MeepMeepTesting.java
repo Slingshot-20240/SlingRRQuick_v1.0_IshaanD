@@ -21,10 +21,7 @@ public class MeepMeepTesting {
                 .waitSeconds(2)
                 .strafeToConstantHeading(new Vector2d(10,-31.5))
                 .waitSeconds(1)
-
                 .strafeToConstantHeading(new Vector2d(10,-33))
-
-
 
                 //Go to block 1
                 .splineToLinearHeading(new Pose2d(27,-40,Math.toRadians(90)),Math.toRadians(360))
