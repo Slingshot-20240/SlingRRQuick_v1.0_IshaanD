@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.mechanisms_and_movement.autonomous;
+package org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.autonomous;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Action;
@@ -11,7 +11,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.MecanumDrive;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.*;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ActiveIntake;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ArmClaw;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Extendo;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Lift;
 
 @Config
 @Autonomous(name = "Concept RR ITD_SampleAuton", group = "Autonomous")

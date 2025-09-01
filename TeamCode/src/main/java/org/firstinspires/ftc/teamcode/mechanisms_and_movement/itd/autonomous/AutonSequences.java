@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.mechanisms_and_movement.autonomous;
+package org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.autonomous;
 
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
@@ -7,13 +7,13 @@ import com.acmerobotics.roadrunner.ParallelAction;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.SleepAction;
 
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ActiveIntake;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Arm;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ArmClaw;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ClawPivot;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Extendo;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.IntakePivot;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Lift;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ActiveIntake;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Arm;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ArmClaw;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ClawPivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Extendo;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.IntakePivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Lift;
 
 
 public class AutonSequences {

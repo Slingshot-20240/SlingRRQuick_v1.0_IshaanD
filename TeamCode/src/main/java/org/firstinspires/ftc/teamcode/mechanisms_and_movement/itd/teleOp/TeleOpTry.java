@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.mechanisms_and_movement.teleOp;
+package org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.teleOp;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
@@ -15,13 +15,13 @@ import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ActiveIntake;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Arm;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ArmClaw;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.ClawPivot;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Extendo;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.IntakePivot;
-import org.firstinspires.ftc.teamcode.mechanisms_and_movement.subsystems.Lift;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ActiveIntake;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Arm;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ArmClaw;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.ClawPivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Extendo;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.IntakePivot;
+import org.firstinspires.ftc.teamcode.mechanisms_and_movement.itd.subsystems.Lift;
 import org.firstinspires.ftc.teamcode.roadrunner.Drawing;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 
