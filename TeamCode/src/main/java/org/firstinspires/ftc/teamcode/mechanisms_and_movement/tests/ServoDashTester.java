@@ -22,7 +22,7 @@ public class ServoDashTester extends LinearOpMode {
             // Continuously set servo to dashboard value
             servo.setPosition(SERVO_POSITION);
 
-            telemetry.addData("Servo Position", SERVO_POSITION);
+            telemetry.addData("Servo Position: ", SERVO_POSITION);
             telemetry.update();
         }
     }
